@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caption Craft - Documentation</title>
+    <meta name="description" content="Complete documentation for Caption Craft - AI-powered video subtitle generator iOS app">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007AFF;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007AFF;
+        }
+
+        /* Main Content */
+        .main {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            color: #007AFF;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #f0f7ff;
+            color: #007AFF;
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .content h2 {
+            color: #007AFF;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f7ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .content h3 {
+            color: #333;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .content ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert.info {
+            background: #f0f7ff;
+            border-color: #007AFF;
+            color: #0056b3;
+        }
+
+        .alert.warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert.danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #007AFF;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+        }
+
+        .btn.secondary:hover {
+            background: #545b62;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+
+        /* Hide content sections by default */
+        .doc-section {
+            display: none;
+        }
+
+        .doc-section.active {
+            display: block;
+        }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007AFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>📱 Caption Craft Documentation</h1>
+                <p>Complete setup and customization guide for the AI-powered video subtitle generator</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-logo">Caption Craft</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="docs.html" class="active">Documentation</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="main">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <h3>📚 Documentation</h3>
+                <ul>
+                    <li><a href="#overview" class="doc-link active">Overview</a></li>
+                    <li><a href="#quick-start" class="doc-link">Quick Start</a></li>
+                    <li><a href="#admob-setup" class="doc-link">AdMob Setup</a></li>
+                    <li><a href="#configuration" class="doc-link">Configuration</a></li>
+                    <li><a href="#customization" class="doc-link">Customization</a></li>
+                    <li><a href="#testing" class="doc-link">Testing Guide</a></li>
+                    <li><a href="#app-store" class="doc-link">App Store</a></li>
+                    <li><a href="#troubleshooting" class="doc-link">Troubleshooting</a></li>
+                    <li><a href="#codecanyon" class="doc-link">CodeCanyon</a></li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Overview Section -->
+                <section id="overview" class="doc-section active">
+                    <h1>🎬 Caption Craft Documentation</h1>
+
+                    <div class="alert info">
+                        <strong>Welcome!</strong> This comprehensive documentation will guide you through setting up, customizing, and publishing your Caption Craft app.
+                    </div>
+
+                    <h2>What You Get</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">📱</div>
+                            <h3>Complete iOS App</h3>
+                            <p>Full SwiftUI source code with MVVM architecture, ready for compilation and submission</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">💰</div>
+                            <h3>AdMob Integration</h3>
+                            <p>Monetization ready with rewarded video ads for premium export features</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🤖</div>
+                            <h3>AI Speech Recognition</h3>
+                            <p>Advanced speech-to-text with 50+ language support and 95%+ accuracy</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🌐</div>
+                            <h3>Marketing Website</h3>
+                            <p>Professional landing page with privacy policy and terms of service</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">📚</div>
+                            <h3>Complete Documentation</h3>
+                            <p>Step-by-step guides for setup, customization, and App Store submission</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🎨</div>
+                            <h3>Easy Customization</h3>
+                            <p>Simple configuration files for branding, colors, and app settings</p>
+                        </div>
+                    </div>
+
+                    <h2>Requirements</h2>
+                    <ul>
+                        <li><strong>Xcode 15.0+</strong> (free from Mac App Store)</li>
+                        <li><strong>macOS 10.15+</strong> (Catalina or later)</li>
+                        <li><strong>Apple Developer Account</strong> ($99/year for App Store)</li>
+                        <li><strong>AdMob Account</strong> (free from Google)</li>
+                        <li><strong>Basic iOS knowledge</strong> (recommended)</li>
+                    </ul>
+
+                    <h2>Quick Navigation</h2>
+                    <p>Use the sidebar to navigate through different sections:</p>
+                    <ul>
+                        <li><strong>Quick Start</strong> - Get running in 15 minutes</li>
+                        <li><strong>AdMob Setup</strong> - Configure monetization</li>
+                        <li><strong>Configuration</strong> - Essential app settings</li>
+                        <li><strong>Customization</strong> - Branding and features</li>
+                        <li><strong>Testing</strong> - Validate your setup</li>
+                        <li><strong>App Store</strong> - Publishing guidelines</li>
+                    </ul>
+
+                    <div class="alert success">
+                        <strong>Ready to start?</strong> Click "Quick Start" in the sidebar to begin your 15-minute setup process.
+                    </div>
+                </section>
+
+                <!-- Loading placeholder for other sections -->
+                <section id="quick-start" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Quick Start Guide...</p>
+                    </div>
+                </section>
+
+                <section id="admob-setup" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading AdMob Setup Guide...</p>
+                    </div>
+                </section>
+
+                <section id="configuration" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Configuration Guide...</p>
+                    </div>
+                </section>
+
+                <section id="customization" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Customization Guide...</p>
+                    </div>
+                </section>
+
+                <section id="testing" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Testing Guide...</p>
+                    </div>
+                </section>
+
+                <section id="app-store" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading App Store Guide...</p>
+                    </div>
+                </section>
+
+                <section id="troubleshooting" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Troubleshooting Guide...</p>
+                    </div>
+                </section>
+
+                <section id="codecanyon" class="doc-section">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading CodeCanyon Guide...</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Caption Craft. Professional iOS app documentation.</p>
+            <p>Support: <a href="mailto:sami.dev.studioo@gmail.com" style="color: #007AFF;">sami.dev.studioo@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const docLinks = document.querySelectorAll('.doc-link');
+            const docSections = document.querySelectorAll('.doc-section');
+
+            // Navigation handler
+            docLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all links and sections
+                    docLinks.forEach(l => l.classList.remove('active'));
+                    docSections.forEach(s => s.classList.remove('active'));
+
+                    // Add active class to clicked link
+                    this.classList.add('active');
+
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+
+                        // Load content if it's a loading placeholder
+                        loadSectionContent(targetId);
+                    }
+                });
+            });
+
+            // Load section content dynamically
+            function loadSectionContent(sectionId) {
+                const section = document.getElementById(sectionId);
+                const loadingDiv = section.querySelector('.loading');
+
+                if (loadingDiv) {
+                    // Simulate loading delay
+                    setTimeout(() => {
+                        loadingDiv.innerHTML = getSectionContent(sectionId);
+                    }, 500);
+                }
+            }
+
+            // Content for each section
+            function getSectionContent(sectionId) {
+                const content = {
+                    'quick-start': `
+                        <h1>🚀 Quick Start Guide</h1>
+
+                        <div class="alert info">
+                            <strong>Time Required:</strong> 15 minutes to get your app running
+                        </div>
+
+                        <h2>Step 1: Open the Project (2 minutes)</h2>
+                        <div class="code-block">
+                            <pre>1. Extract the downloaded ZIP file
+2. Navigate to the iOS app folder
+3. Double-click CaptionCraft.xcodeproj
+4. Wait for Xcode to load the project</pre>
+                        </div>
+
+                        <h2>Step 2: Configure Bundle Identifier (3 minutes)</h2>
+                        <ol>
+                            <li>Select <strong>CaptionCraft</strong> project in navigator</li>
+                            <li>Select <strong>CaptionCraft</strong> target</li>
+                            <li>Go to <strong>"Signing & Capabilities"</strong> tab</li>
+                            <li>Change Bundle Identifier to: <code>com.yourcompany.captioncraft</code></li>
+                            <li>Select your development team</li>
+                        </ol>
+
+                        <h2>Step 3: Test Build (5 minutes)</h2>
+                        <ol>
+                            <li>Select iPhone simulator (iPhone 14 Pro recommended)</li>
+                            <li>Press <strong>Cmd+R</strong> to build and run</li>
+                            <li>Test basic functionality in simulator</li>
+                        </ol>
+
+                        <div class="alert success">
+                            <strong>Success!</strong> If the app builds and runs, you're ready for AdMob configuration.
+                        </div>
+
+                        <h2>Step 4: AdMob Configuration (5 minutes)</h2>
+                        <p>Click <strong>"AdMob Setup"</strong> in the sidebar for detailed instructions.</p>
+
+                        <a href="#" class="btn" onclick="document.querySelector('a[href=\\\"#admob-setup\\\"]').click()">
+                            Continue to AdMob Setup →
+                        </a>
+                    `,
+
+                    'admob-setup': `
+                        <h1>💰 AdMob Setup Guide</h1>
+
+                        <div class="alert warning">
+                            <strong>Important:</strong> AdMob integration is required for monetization. Follow these steps carefully.
+                        </div>
+
+                        <h2>Step 1: Create AdMob Account</h2>
+                        <ol>
+                            <li>Go to <a href="https://admob.google.com" target="_blank">admob.google.com</a></li>
+                            <li>Sign in with Google account</li>
+                            <li>Click "Get Started" and accept terms</li>
+                            <li>Complete account verification</li>
+                        </ol>
+
+                        <h2>Step 2: Create iOS App</h2>
+                        <ol>
+                            <li>In AdMob dashboard, click <strong>"Apps"</strong> → <strong>"Add App"</strong></li>
+                            <li>Select <strong>"iOS"</strong> platform</li>
+                            <li>Enter app name: <strong>"Caption Craft"</strong></li>
+                            <li>Copy your <strong>App ID</strong> (format: ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX)</li>
+                        </ol>
+
+                        <h2>Step 3: Create Rewarded Ad Unit</h2>
+                        <ol>
+                            <li>Click on your app → <strong>"Ad Units"</strong> → <strong>"Add Ad Unit"</strong></li>
+                            <li>Select <strong>"Rewarded"</strong></li>
+                            <li>Name: <strong>"Premium Export Reward"</strong></li>
+                            <li>Copy your <strong>Ad Unit ID</strong> (format: ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX)</li>
+                        </ol>
+
+                        <h2>Step 4: Update App Configuration</h2>
+
+                        <h3>Update Info.plist:</h3>
+                        <div class="code-block">
+                            <pre>&lt;!-- File: CaptionCraft/Info.plist --&gt;
+&lt;key&gt;GADApplicationIdentifier&lt;/key&gt;
+&lt;string&gt;YOUR_ADMOB_APP_ID_HERE&lt;/string&gt;</pre>
+                        </div>
+
+                        <h3>Update Constants.swift:</h3>
+                        <div class="code-block">
+                            <pre>// File: CaptionCraft/Utils/Constants.swift
+struct Ads {
+    static let rewardedAdUnitID: String = "YOUR_AD_UNIT_ID_HERE"
+    static let testRewardedAdUnitID: String = "ca-app-pub-3940256099942544/1712485313"
+}</pre>
+                        </div>
+
+                        <div class="alert success">
+                            <strong>Test Ads:</strong> Use Google's test ad unit ID during development, switch to your real ID before App Store submission.
+                        </div>
+
+                        <a href="#" class="btn" onclick="document.querySelector('a[href=\\\"#testing\\\"]').click()">
+                            Test AdMob Integration →
+                        </a>
+                    `,
+
+                    'configuration': `
+                        <h1>⚙️ Configuration Guide</h1>
+
+                        <div class="alert info">
+                            <strong>Essential Changes:</strong> These configurations are required for your app to work properly.
+                        </div>
+
+                        <h2>Required Changes</h2>
+
+                        <h3>1. AdMob App ID (Info.plist)</h3>
+                        <div class="code-block">
+                            <pre>📁 File: CaptionCraft/Info.plist
+🔍 Line: 6
+
+FIND:
+&lt;string&gt;ca-app-pub-6969174555160998~5410990496&lt;/string&gt;
+
+CHANGE TO:
+&lt;string&gt;YOUR_ADMOB_APP_ID_HERE&lt;/string&gt;</pre>
+                        </div>
+
+                        <h3>2. Ad Unit ID (Constants.swift)</h3>
+                        <div class="code-block">
+                            <pre>📁 File: CaptionCraft/Utils/Constants.swift
+🔍 Lines: 284-291
+
+FIND:
+static let rewardedAdUnitID: String = "ca-app-pub-6969174555160998/8145783284"
+
+CHANGE TO:
+static let rewardedAdUnitID: String = "YOUR_AD_UNIT_ID_HERE"</pre>
+                        </div>
+
+                        <h3>3. Bundle Identifier (Xcode Project)</h3>
+                        <ol>
+                            <li>Select CaptionCraft project</li>
+                            <li>Go to "General" tab</li>
+                            <li>Change Bundle Identifier to: <code>com.yourcompany.yourapp</code></li>
+                            <li>Select your Apple Developer team</li>
+                        </ol>
+
+                        <h2>Optional Changes</h2>
+
+                        <h3>App Information</h3>
+                        <div class="code-block">
+                            <pre>// File: CaptionCraft/Utils/Constants.swift
+struct App {
+    static let name = "Your App Name"
+    static let version = "1.0.0"
+    static let bundleIdentifier = "com.yourcompany.yourapp"
+}</pre>
+                        </div>
+
+                        <h3>Support Email</h3>
+                        <p>Replace <code>sami.dev.studioo@gmail.com</code> with your email in all files:</p>
+                        <ul>
+                            <li>CaptionCraft/Views/PrivacyPolicyView.swift</li>
+                            <li>CaptionCraft/Views/TermsOfServiceView.swift</li>
+                            <li>Website files (privacy.html, terms.html)</li>
+                        </ul>
+
+                        <div class="alert warning">
+                            <strong>Important:</strong> Update all contact information before App Store submission.
+                        </div>
+                    `,
+
+                    'customization': `
+                        <h1>🎨 Customization Guide</h1>
+
+                        <h2>App Branding</h2>
+
+                        <h3>1. App Icon</h3>
+                        <p><strong>Location:</strong> CaptionCraft/Assets.xcassets/AppIcon.appiconset/</p>
+                        <ul>
+                            <li>1024x1024px (App Store)</li>
+                            <li>180x180px (iPhone 3x)</li>
+                            <li>120x120px (iPhone 2x)</li>
+                            <li>167x167px (iPad Pro)</li>
+                            <li>152x152px (iPad 2x)</li>
+                            <li>76x76px (iPad 1x)</li>
+                        </ul>
+
+                        <h3>2. Color Scheme</h3>
+                        <div class="code-block">
+                            <pre>// File: CaptionCraft/Utils/Constants.swift
+struct Colors {
+    static let primary = Color(hex: "007AFF")      // Main brand color
+    static let secondary = Color(hex: "5856D6")    // Secondary color
+    static let accent = Color(hex: "007AFF")       // Accent color
+    static let success = Color(hex: "34C759")      // Success color
+    static let warning = Color(hex: "FF9500")      // Warning color
+    static let error = Color(hex: "FF3B30")        // Error color
+}</pre>
+                        </div>
+
+                        <h3>3. App Name</h3>
+                        <ol>
+                            <li>In Xcode: Select project → General tab</li>
+                            <li>Change "Display Name" to your app name</li>
+                            <li>Update Constants.swift App struct</li>
+                        </ol>
+
+                        <h2>Feature Customization</h2>
+
+                        <h3>Subtitle Styles</h3>
+                        <div class="code-block">
+                            <pre>// Add custom styles to presetStyles array
+CaptionStyle(
+    name: "Your Custom Style",
+    font: .system,
+    fontSize: 26,
+    textColor: .blue,
+    backgroundColor: .yellow,
+    borderColor: .black,
+    borderWidth: 3,
+    position: .center,
+    maxLines: 1
+)</pre>
+                        </div>
+
+                        <h3>Video Settings</h3>
+                        <div class="code-block">
+                            <pre>// File: CaptionCraft/Utils/Constants.swift
+struct Video {
+    static let maxFileSize: Int64 = 1000 * 1024 * 1024  // 1GB
+    static let maxDuration: TimeInterval = 1200         // 20 minutes
+    static let supportedFormats = ["mp4", "mov"]        // Supported formats
+    static let minDuration: TimeInterval = 3            // 3 seconds
+}</pre>
+                        </div>
+
+                        <h3>Supported Languages</h3>
+                        <p>Enable/disable languages by commenting out entries in supportedLanguages dictionary.</p>
+
+                        <div class="alert info">
+                            <strong>Tip:</strong> Test all customizations on a physical device before App Store submission.
+                        </div>
+                    `,
+
+                    'testing': `
+                        <h1>🧪 Testing Guide</h1>
+
+                        <div class="alert danger">
+                            <strong>Critical:</strong> Always test on a physical iOS device. Simulators cannot test ads or speech recognition.
+                        </div>
+
+                        <h2>Pre-Testing Checklist</h2>
+                        <ul>
+                            <li>✅ AdMob App ID updated in Info.plist</li>
+                            <li>✅ AdMob Ad Unit ID updated in Constants.swift</li>
+                            <li>✅ Bundle identifier changed to unique ID</li>
+                            <li>✅ Development team selected</li>
+                            <li>✅ App builds without errors</li>
+                        </ul>
+
+                        <h2>Phase 1: Basic App Testing</h2>
+                        <ol>
+                            <li><strong>App Launch:</strong> Verify app opens without crashes</li>
+                            <li><strong>Video Import:</strong> Test photo library access</li>
+                            <li><strong>Video Recording:</strong> Test camera functionality</li>
+                            <li><strong>Navigation:</strong> Test all screen transitions</li>
+                        </ol>
+
+                        <h2>Phase 2: Speech Recognition Testing</h2>
+                        <ol>
+                            <li><strong>Permissions:</strong> Grant microphone access</li>
+                            <li><strong>Transcription:</strong> Test with clear English speech</li>
+                            <li><strong>Accuracy:</strong> Verify subtitle timing and content</li>
+                            <li><strong>Languages:</strong> Test different language settings</li>
+                        </ol>
+
+                        <h2>Phase 3: AdMob Integration Testing</h2>
+
+                        <h3>Debug Console Logs:</h3>
+                        <div class="code-block">
+                            <pre>✅ "AdMob initialized with status: Ready"
+✅ "Loading rewarded ad with unit ID: ca-app-pub-..."
+✅ "Ad loaded successfully"
+❌ "Ad failed to load with error: ..."</pre>
+                        </div>
+
+                        <h3>Ad Display Testing:</h3>
+                        <ol>
+                            <li>Complete video transcription</li>
+                            <li>Tap "Watch Ad to Export"</li>
+                            <li>Verify ad loads and plays</li>
+                            <li>Confirm export unlocks after ad</li>
+                        </ol>
+
+                        <h2>Phase 4: Export Testing</h2>
+                        <ol>
+                            <li><strong>Quality:</strong> Test different video lengths</li>
+                            <li><strong>Save to Photos:</strong> Verify video saves correctly</li>
+                            <li><strong>Sharing:</strong> Test social media sharing</li>
+                            <li><strong>Performance:</strong> Monitor processing times</li>
+                        </ol>
+
+                        <h2>Common Issues</h2>
+
+                        <h3>"Ads not loading"</h3>
+                        <ul>
+                            <li>Check AdMob IDs in Info.plist and Constants.swift</li>
+                            <li>Wait 24-48 hours for AdMob approval</li>
+                            <li>Test with different geographic location</li>
+                            <li>Verify internet connection</li>
+                        </ul>
+
+                        <h3>"Speech recognition not working"</h3>
+                        <ul>
+                            <li>Test on physical device (required)</li>
+                            <li>Grant microphone permissions</li>
+                            <li>Use videos with clear, loud speech</li>
+                            <li>Check supported language list</li>
+                        </ul>
+
+                        <div class="alert success">
+                            <strong>Testing Complete!</strong> Once all tests pass, your app is ready for App Store submission.
+                        </div>
+                    `,
+
+                    'app-store': `
+                        <h1>🏪 App Store Submission</h1>
+
+                        <h2>Pre-Submission Checklist</h2>
+                        <div class="alert warning">
+                            <strong>Important:</strong> Complete all items before submitting to App Store.
+                        </div>
+
+                        <h3>Code Configuration</h3>
+                        <ul>
+                            <li>✅ Bundle ID changed to unique identifier</li>
+                            <li>✅ App name updated in project settings</li>
+                            <li>✅ Development team selected</li>
+                            <li>✅ Production AdMob IDs configured</li>
+                            <li>✅ App icon replaced with your design</li>
+                            <li>✅ Support email updated throughout app</li>
+                            <li>✅ App tested on physical device</li>
+                        </ul>
+
+                        <h2>App Store Connect Setup</h2>
+
+                        <h3>Create App Record</h3>
+                        <ol>
+                            <li>Go to <a href="https://appstoreconnect.apple.com" target="_blank">appstoreconnect.apple.com</a></li>
+                            <li>Click "My Apps" → "+" → "New App"</li>
+                            <li>Fill required information:
+                                <ul>
+                                    <li><strong>Platform:</strong> iOS</li>
+                                    <li><strong>Name:</strong> Your App Name</li>
+                                    <li><strong>Primary Language:</strong> English</li>
+                                    <li><strong>Bundle ID:</strong> com.yourcompany.yourapp</li>
+                                    <li><strong>SKU:</strong> Your unique identifier</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h3>App Information</h3>
+                        <ul>
+                            <li><strong>Category:</strong> Photo & Video</li>
+                            <li><strong>Content Rights:</strong> Yes</li>
+                            <li><strong>Age Rating:</strong> 4+</li>
+                            <li><strong>Price:</strong> Free</li>
+                        </ul>
+
+                        <h2>App Description Template</h2>
+                        <div class="code-block">
+                            <pre>Transform your videos with professional AI-generated subtitles in seconds!
+
+🎬 FEATURES:
+• AI-powered speech recognition with 95%+ accuracy
+• Support for 50+ languages worldwide
+• Beautiful, customizable subtitle styles
+• Privacy-first: all processing on your device
+• Export in HD quality for social media
+• Completely free with no hidden costs
+
+🚀 PERFECT FOR:
+• Content creators and influencers
+• Social media marketers
+• Educators and trainers
+• Making videos accessible
+
+✨ HOW IT WORKS:
+1. Import or record your video
+2. AI creates subtitles automatically
+3. Customize style and edit text
+4. Export your finished video
+
+Download now and make your videos accessible to everyone!</pre>
+                        </div>
+
+                        <h2>Required Assets</h2>
+
+                        <h3>App Icon</h3>
+                        <ul>
+                            <li><strong>Size:</strong> 1024x1024 pixels</li>
+                            <li><strong>Format:</strong> PNG without transparency</li>
+                            <li><strong>Design:</strong> Simple, recognizable, works at small sizes</li>
+                        </ul>
+
+                        <h3>Screenshots</h3>
+                        <ul>
+                            <li><strong>iPhone:</strong> 1290x2796 (iPhone 14 Pro)</li>
+                            <li><strong>iPad:</strong> 2048x2732 (12.9-inch) - Optional</li>
+                            <li><strong>Quantity:</strong> 3-10 screenshots showing key features</li>
+                        </ul>
+
+                        <h2>Build and Upload</h2>
+
+                        <h3>Archive Process</h3>
+                        <ol>
+                            <li>In Xcode, select "Any iOS Device (arm64)"</li>
+                            <li>Go to Product → Archive</li>
+                            <li>Wait for archive to complete</li>
+                            <li>Click "Distribute App"</li>
+                            <li>Select "App Store Connect"</li>
+                            <li>Follow upload wizard</li>
+                        </ol>
+
+                        <h3>Submit for Review</h3>
+                        <ol>
+                            <li>In App Store Connect, go to your app</li>
+                            <li>Click "Prepare for Submission"</li>
+                            <li>Upload screenshots and metadata</li>
+                            <li>Add app description and keywords</li>
+                            <li>Click "Submit for Review"</li>
+                        </ol>
+
+                        <div class="alert info">
+                            <strong>Review Time:</strong> Usually 24-48 hours. Monitor your email for approval notification.
+                        </div>
+
+                        <h2>Keywords</h2>
+                        <div class="code-block">
+                            <pre>subtitles,captions,video,AI,speech recognition,accessibility,social media,content creator,transcription,automatic</pre>
+                        </div>
+
+                        <div class="alert success">
+                            <strong>Success!</strong> After approval, your app will be available on the App Store and you can start earning revenue through AdMob.
+                        </div>
+                    `,
+
+                    'troubleshooting': `
+                        <h1>🔧 Troubleshooting</h1>
+
+                        <h2>Build Issues</h2>
+
+                        <h3>"GoogleMobileAds not found"</h3>
+                        <div class="alert warning">
+                            <strong>Solution:</strong>
+                            <ol>
+                                <li>File → Packages → Reset Package Caches</li>
+                                <li>Clean build folder (Cmd+Shift+K)</li>
+                                <li>Rebuild project (Cmd+B)</li>
+                            </ol>
+                        </div>
+
+                        <h3>"Bundle identifier already exists"</h3>
+                        <div class="alert warning">
+                            <strong>Solution:</strong>
+                            <ol>
+                                <li>Change bundle identifier in project settings</li>
+                                <li>Use format: com.yourcompany.yourappname</li>
+                                <li>Ensure it's unique in App Store Connect</li>
+                            </ol>
+                        </div>
+
+                        <h3>"Provisioning profile errors"</h3>
+                        <div class="alert warning">
+                            <strong>Solution:</strong>
+                            <ol>
+                                <li>Ensure you have Apple Developer account</li>
+                                <li>Xcode → Preferences → Accounts → Download Manual Profiles</li>
+                                <li>Select "Automatically manage signing"</li>
+                            </ol>
+                        </div>
+
+                        <h2>Runtime Issues</h2>
+
+                        <h3>"Ads not loading"</h3>
+                        <div class="code-block">
+                            <pre>Possible Causes:
+• Incorrect AdMob App ID or Ad Unit ID
+• AdMob account not approved
+• Testing in unsupported region
+• Internet connectivity issues
+
+Solutions:
+1. Double-check IDs in Info.plist and Constants.swift
+2. Wait 24-48 hours for AdMob approval
+3. Test with VPN in different region
+4. Use Google's test ad unit IDs for testing</pre>
+                        </div>
+
+                        <h3>"Speech recognition not working"</h3>
+                        <div class="code-block">
+                            <pre>Possible Causes:
+• Testing in simulator instead of device
+• Microphone permission not granted
+• Poor audio quality in video
+• Unsupported language selected
+
+Solutions:
+1. Always test on physical device
+2. Grant microphone permissions in Settings
+3. Use videos with clear, loud speech
+4. Test with supported language list</pre>
+                        </div>
+
+                        <h3>"Export failing"</h3>
+                        <div class="code-block">
+                            <pre>Possible Causes:
+• Insufficient storage space
+• Video format compatibility issues
+• Processing timeout
+• Memory limitations
+
+Solutions:
+1. Free up storage space on device
+2. Test with shorter videos first
+3. Restart app and try again
+4. Use videos in MP4 or MOV format</pre>
+                        </div>
+
+                        <h3>"App crashes on launch"</h3>
+                        <div class="code-block">
+                            <pre>Possible Causes:
+• Missing development team configuration
+• Bundle identifier conflicts
+• Missing required frameworks
+• Provisioning profile issues
+
+Solutions:
+1. Set development team in project settings
+2. Use unique bundle identifier
+3. Clean build and rebuild project
+4. Regenerate provisioning profiles</pre>
+                        </div>
+
+                        <h2>Performance Issues</h2>
+
+                        <h3>"App running slowly"</h3>
+                        <ul>
+                            <li>Test on actual device (simulator is slower)</li>
+                            <li>Check memory usage in Xcode instruments</li>
+                            <li>Optimize video processing in background</li>
+                            <li>Reduce video resolution if needed</li>
+                        </ul>
+
+                        <h3>"High memory usage"</h3>
+                        <ul>
+                            <li>Release video objects after processing</li>
+                            <li>Use autoreleasepool for heavy operations</li>
+                            <li>Process videos in chunks</li>
+                            <li>Monitor memory in Xcode instruments</li>
+                        </ul>
+
+                        <h2>AdMob Issues</h2>
+
+                        <h3>Debug Console Commands</h3>
+                        <div class="code-block">
+                            <pre>// Enable AdMob debug logging
+// Check console for these messages:
+"AdMob initialized with status: Ready"
+"Loading rewarded ad with unit ID: ca-app-pub-..."
+"Ad loaded successfully"
+"Ad failed to load with error: ..."</pre>
+                        </div>
+
+                        <h3>Test Device Configuration</h3>
+                        <ol>
+                            <li>Go to <a href="https://admob.google.com/home/" target="_blank">AdMob Console</a></li>
+                            <li>Navigate to "Test devices"</li>
+                            <li>Add your iOS device ID for testing</li>
+                            <li>Use test ads during development</li>
+                        </ol>
+
+                        <h2>Getting Help</h2>
+
+                        <div class="alert info">
+                            <strong>Need more help?</strong> Contact support with detailed information:
+                            <ul>
+                                <li>Device model and iOS version</li>
+                                <li>Xcode version and error messages</li>
+                                <li>Screenshots of the issue</li>
+                                <li>Steps to reproduce the problem</li>
+                            </ul>
+                            <p><strong>Email:</strong> <a href="mailto:sami.dev.studioo@gmail.com">sami.dev.studioo@gmail.com</a></p>
+                        </div>
+                    `,
+
+                    'codecanyon': `
+                        <h1>🏪 CodeCanyon Guide</h1>
+
+                        <h2>Selling on CodeCanyon</h2>
+
+                        <div class="alert info">
+                            <strong>CodeCanyon</strong> is the world's largest marketplace for mobile app source code and templates.
+                        </div>
+
+                        <h3>Getting Started</h3>
+                        <ol>
+                            <li>Create account at <a href="https://codecanyon.net" target="_blank">codecanyon.net</a></li>
+                            <li>Complete author verification process</li>
+                            <li>Prepare your app package for submission</li>
+                            <li>Create professional listing with documentation</li>
+                        </ol>
+
+                        <h2>Package Preparation</h2>
+
+                        <h3>Required Files</h3>
+                        <ul>
+                            <li>✅ Complete iOS app source code</li>
+                            <li>✅ Comprehensive documentation</li>
+                            <li>✅ Setup and configuration guides</li>
+                            <li>✅ Professional README file</li>
+                            <li>✅ License and terms</li>
+                        </ul>
+
+                        <h3>Documentation Standards</h3>
+                        <ul>
+                            <li><strong>Setup Guide:</strong> Step-by-step installation</li>
+                            <li><strong>Configuration:</strong> How to customize the app</li>
+                            <li><strong>Requirements:</strong> Software and hardware needs</li>
+                            <li><strong>Features:</strong> Complete feature list</li>
+                            <li><strong>Support:</strong> Contact information</li>
+                        </ul>
+
+                        <h2>Listing Optimization</h2>
+
+                        <h3>Title</h3>
+                        <div class="code-block">
+                            <pre>Caption Craft - AI Video Subtitle Generator iOS App with AdMob</pre>
+                        </div>
+
+                        <h3>Category</h3>
+                        <ul>
+                            <li><strong>Primary:</strong> Mobile → iOS → Full Applications</li>
+                            <li><strong>Secondary:</strong> Video & Photography</li>
+                        </ul>
+
+                        <h3>Tags</h3>
+                        <div class="code-block">
+                            <pre>ios, swift, swiftui, video, subtitles, captions, ai, speech-recognition, admob, monetization, social-media, content-creator, accessibility, transcription, automatic</pre>
+                        </div>
+
+                        <h3>Pricing Strategy</h3>
+                        <ul>
+                            <li><strong>Regular License:</strong> $49 (single commercial project)</li>
+                            <li><strong>Extended License:</strong> $149 (multiple projects)</li>
+                        </ul>
+
+                        <h2>Marketing Materials</h2>
+
+                        <h3>Screenshots</h3>
+                        <ol>
+                            <li><strong>Main App Interface:</strong> Show clean, professional design</li>
+                            <li><strong>AI Processing:</strong> Highlight automatic subtitle generation</li>
+                            <li><strong>Customization:</strong> Display style options</li>
+                            <li><strong>Export Results:</strong> Show final video with subtitles</li>
+                            <li><strong>Source Code:</strong> Professional Xcode project view</li>
+                            <li><strong>Documentation:</strong> Comprehensive guides included</li>
+                        </ol>
+
+                        <h3>Preview Video</h3>
+                        <ul>
+                            <li><strong>Length:</strong> 30-60 seconds</li>
+                            <li><strong>Content:</strong> Feature demonstration</li>
+                            <li><strong>Quality:</strong> 1080p HD</li>
+                            <li><strong>Music:</strong> Royalty-free background track</li>
+                        </ul>
+
+                        <h2>Product Description Template</h2>
+                        <div class="code-block">
+                            <pre>🎬 Caption Craft - Professional AI-Powered Video Subtitle Generator
+
+Transform your video content with professional AI-generated subtitles! Caption Craft is a complete, production-ready iOS application that automatically creates accurate subtitles for videos using advanced speech recognition technology.
+
+✨ PERFECT FOR:
+• Content creators and social media influencers
+• Video marketers and digital agencies
+• iOS developers looking for profitable app ideas
+• Entrepreneurs entering the video content market
+
+🚀 WHAT YOU GET:
+✅ Complete iOS App Source Code (SwiftUI + UIKit)
+✅ AdMob Integration with Rewarded Video Ads
+✅ Professional Marketing Website (HTML/CSS/JS)
+✅ Comprehensive Documentation & Setup Guides
+✅ App Store Submission Guidelines
+✅ Commercial License - Sell Unlimited Copies
+✅ Full Customization Rights
+✅ Developer Support Included
+
+💰 MONETIZATION READY:
+• Freemium model with AdMob rewarded ads
+• Users watch ads to unlock premium export features
+• Proven revenue model with high user engagement
+• Complete AdMob setup guide included</pre>
+                        </div>
+
+                        <h2>Quality Standards</h2>
+
+                        <h3>Code Quality</h3>
+                        <ul>
+                            <li>Clean, well-documented code</li>
+                            <li>Modern iOS development practices</li>
+                            <li>Error handling and edge cases</li>
+                            <li>Performance optimization</li>
+                            <li>Memory management</li>
+                        </ul>
+
+                        <h3>Documentation Quality</h3>
+                        <ul>
+                            <li>Step-by-step setup instructions</li>
+                            <li>Clear customization guidelines</li>
+                            <li>Troubleshooting section</li>
+                            <li>Professional formatting</li>
+                            <li>Screenshots and examples</li>
+                        </ul>
+
+                        <h2>Support Strategy</h2>
+
+                        <h3>Response Times</h3>
+                        <ul>
+                            <li><strong>General Questions:</strong> 24-48 hours</li>
+                            <li><strong>Setup Issues:</strong> Same day</li>
+                            <li><strong>Bug Reports:</strong> Priority handling</li>
+                        </ul>
+
+                        <h3>Support Channels</h3>
+                        <ul>
+                            <li><strong>Email:</strong> sami.dev.studioo@gmail.com</li>
+                            <li><strong>Documentation:</strong> Comprehensive guides</li>
+                            <li><strong>Updates:</strong> Regular improvements</li>
+                        </ul>
+
+                        <h2>Success Tips</h2>
+
+                        <ol>
+                            <li><strong>Professional Presentation:</strong> High-quality screenshots and description</li>
+                            <li><strong>Complete Package:</strong> Include everything buyers need</li>
+                            <li><strong>Excellent Support:</strong> Respond quickly to customer questions</li>
+                            <li><strong>Regular Updates:</strong> Keep app compatible with new iOS versions</li>
+                            <li><strong>Competitive Pricing:</strong> Research similar products</li>
+                            <li><strong>SEO Optimization:</strong> Use relevant keywords</li>
+                        </ol>
+
+                        <div class="alert success">
+                            <strong>Ready to Submit!</strong> Your Caption Craft app package meets CodeCanyon quality standards and is ready for submission.
+                        </div>
+
+                        <a href="https://codecanyon.net" target="_blank" class="btn">
+                            Submit to CodeCanyon →
+                        </a>
+                    `
+                };
+
+                return content[sectionId] || '<h1>Content not found</h1>';
+            }
+        });
+    </script>
+</body>
+</html>
