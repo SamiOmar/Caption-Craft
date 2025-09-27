@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Datenschutzerklärung für Caption Craft - AI Video Subtitles App">
+    <title>Caption Craft - Datenschutzerklärung</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px rgba(99, 102, 241, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .privacy-content {
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 25px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .contact-section {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .contact-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .last-updated {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                margin: 0 10px;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .privacy-content {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .contact-link {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="app-icon">CC</div>
+            <div class="header-text">
+                <h1>Caption Craft</h1>
+                <p>AI-Powered Video Subtitles</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="privacy-content">
+            <a href="https://samiomar.github.io/" class="back-link">
+                ← Zurück zur Hauptseite
+            </a>
+
+            <h1 style="font-size: 2rem; text-align: center; margin-bottom: 30px; color: var(--dark);">
+                Datenschutzerklärung
+            </h1>
+
+            <div class="highlight-box">
+                <h3>Zusammenfassung</h3>
+                <p><strong>Caption Craft respektiert Ihre Privatsphäre.</strong> Wir verarbeiten Videos und Audio ausschließlich lokal auf Ihrem Gerät. Es werden keine persönlichen Daten gesammelt oder an externe Server übertragen.</p>
+            </div>
+
+            <h2>1. Datenverarbeitung</h2>
+            
+            <h3>Lokale Verarbeitung</h3>
+            <p>Caption Craft verarbeitet Ihre Videos und Audiodateien ausschließlich auf Ihrem Gerät. Die App nutzt die integrierten KI-Funktionen Ihres iPhones für die automatische Untertitelerstellung.</p>
+            
+            <ul>
+                <li>Alle Videos bleiben auf Ihrem Gerät</li>
+                <li>Keine Übertragung an externe Server</li>
+                <li>Keine Cloud-Speicherung von Videoinhalten</li>
+                <li>Keine Analyse oder Speicherung von Audioinhalten durch uns</li>
+            </ul>
+
+            <h3>Berechtigungen</h3>
+            <p>Caption Craft benötigt folgende Berechtigungen:</p>
+            <ul>
+                <li><strong>Fotos & Videos:</strong> Zum Importieren und Exportieren Ihrer Videos</li>
+                <li><strong>Mikrofon:</strong> Nur für die Transkription von Audioinhalten (lokal verarbeitet)</li>
+            </ul>
+
+            <h2>2. Keine Datensammlung</h2>
+            
+            <h3>Was wir NICHT sammeln:</h3>
+            <ul>
+                <li>Persönliche Identifikationsdaten</li>
+                <li>Video- oder Audioinhalte</li>
+                <li>Geräteinformationen oder eindeutige Identifikatoren</li>
+                <li>Standortdaten</li>
+                <li>Nutzungsstatistiken oder Analytics</li>
+                <li>Kontakte oder andere persönliche Daten</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Privacy by Design</h3>
+                <p>Caption Craft wurde nach dem Prinzip "Privacy by Design" entwickelt. Ihre Daten verlassen niemals Ihr Gerät, da alle Verarbeitungsprozesse lokal ausgeführt werden.</p>
+            </div>
+
+            <h2>3. Drittanbieter-Services</h2>
+            
+            <p>Caption Craft nutzt keine Drittanbieter-Services für:</p>
+            <ul>
+                <li>Analytics oder Tracking</li>
+                <li>Werbung oder Marketing</li>
+                <li>Cloud-Verarbeitung</li>
+                <li>Datensammlung jeder Art</li>
+            </ul>
+
+            <h2>4. Datensicherheit</h2>
+            
+            <p>Da alle Daten lokal auf Ihrem Gerät verarbeitet werden, profitieren Sie von:</p>
+            <ul>
+                <li>iOS-Systemsicherheit und Verschlüsselung</li>
+                <li>Keine Übertragungsrisiken</li>
+                <li>Vollständige Kontrolle über Ihre Daten</li>
+                <li>Keine Server-seitigen Sicherheitsrisiken</li>
+            </ul>
+
+            <h2>5. Ihre Rechte</h2>
+            
+            <p>Da wir keine persönlichen Daten sammeln oder speichern, haben Sie automatisch:</p>
+            <ul>
+                <li>Vollständige Kontrolle über alle Ihre Daten</li>
+                <li>Keine Notwendigkeit zur Löschung von Serverdaten</li>
+                <li>Keine Übertragung an Dritte</li>
+                <li>Komplette Privatsphäre</li>
+            </ul>
+
+            <h2>6. Kinder unter 13 Jahren</h2>
+            
+            <p>Caption Craft sammelt bewusst keine Daten von Kindern unter 13 Jahren oder anderen Personen. Die App funktioniert vollständig lokal ohne jegliche Datenerfassung.</p>
+
+            <h2>7. Änderungen an dieser Datenschutzerklärung</h2>
+            
+            <p>Sollten wir diese Datenschutzerklärung aktualisieren, werden Sie über App-Updates informiert. Wesentliche Änderungen werden vor der Implementierung kommuniziert.</p>
+
+            <div class="contact-section">
+                <h3>Fragen oder Anliegen?</h3>
+                <p>Kontaktieren Sie uns bei Fragen zu dieser Datenschutzerklärung:</p>
+                <a href="mailto:sami.omar.7345@gmail.com" class="contact-link">
+                    E-Mail senden
+                </a>
+                <a href="https://samiomar.github.io/" class="contact-link">
+                    Website besuchen
+                </a>
+            </div>
+
+            <div class="last-updated">
+                <strong>Letzte Aktualisierung:</strong> September 2025<br>
+                <strong>Gültig ab:</strong> Version 1.0 der Caption Craft App
+            </div>
+        </div>
+    </div>
+</body>
+</html>
