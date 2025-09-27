@@ -411,21 +411,21 @@ h1, h2, h3, h4, h5, h6 {
     color: #666;
 }
 
-/* Pricing Section */
-.pricing {
+/* Free App Section */
+.free-app {
     padding: 80px 0;
     background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
 }
 
-.pricing-cards {
+.free-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.pricing-card {
+.free-feature {
     background: #ffffff;
     border-radius: 20px;
     padding: 2.5rem;
@@ -436,73 +436,37 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
-.pricing-card:hover {
+.free-feature:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-.pricing-card.featured {
-    border: 2px solid #007AFF;
-    transform: scale(1.05);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-    color: white;
-    padding: 8px 20px;
+.free-feature .feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #34C759 0%, #28a745 100%);
     border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
 }
 
-.pricing-card h3 {
+.free-feature .feature-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.free-feature h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: #1a1a1a;
 }
 
-.price {
-    margin-bottom: 2rem;
-}
-
-.currency {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #007AFF;
-}
-
-.amount {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #007AFF;
-}
-
-.period {
-    font-size: 1rem;
+.free-feature p {
     color: #666;
-}
-
-.features-list {
-    list-style: none;
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-.features-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    color: #666;
-}
-
-.features-list i {
-    color: #007AFF;
+    line-height: 1.6;
     font-size: 1rem;
 }
 
@@ -814,9 +778,6 @@ h1, h2, h3, h4, h5, h6 {
         gap: 1.5rem;
     }
 
-    .pricing-card.featured {
-        transform: none;
-    }
 }
 
 @media (max-width: 480px) {
@@ -839,7 +800,7 @@ h1, h2, h3, h4, h5, h6 {
     .features,
     .how-it-works,
     .screenshots,
-    .pricing,
+    .free-app,
     .download,
     .faq,
     .support {
