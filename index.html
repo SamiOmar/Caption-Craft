@@ -4,448 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Caption Craft - Die ultimative iOS App für automatische Video-Untertitel. Erstelle professionelle Captions für deine Videos mit KI-gestützter Spracherkennung.">
+    <meta name="keywords" content="Video Untertitel, iOS App, Captions, Spracherkennung, Video Editor, Mobile App">
+    <meta name="author" content="Caption Craft">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/caption-craft/">
+    <meta property="og:title" content="Caption Craft - Automatische Video-Untertitel für iOS">
+    <meta property="og:description" content="Erstelle professionelle Untertitel für deine Videos automatisch mit KI-gestützter Spracherkennung.">
+    <meta property="og:image" content="https://yourusername.github.io/caption-craft/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/caption-craft/">
+    <meta property="twitter:title" content="Caption Craft - Automatische Video-Untertitel für iOS">
+    <meta property="twitter:description" content="Erstelle professionelle Untertitel für deine Videos automatisch mit KI-gestützter Spracherkennung.">
+    <meta property="twitter:image" content="https://yourusername.github.io/caption-craft/images/og-image.jpg">
+
     <title>Caption Craft - Automatische Video-Untertitel für iOS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Apple Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background-color: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #1a1a1a;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #666;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #007AFF;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(0, 122, 255, 0.1);
-            color: #007AFF;
-            border: 2px solid transparent;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 122, 255, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #007AFF;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #666;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 300px;
-            height: 600px;
-            background: linear-gradient(145deg, #f0f0f0, #ffffff);
-            border-radius: 35px;
-            padding: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: #ffffff;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-icon i {
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        .feature-description {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Download Section */
-        .download {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .download .section-title,
-        .download .section-subtitle {
-            color: white;
-        }
-
-        .download-buttons {
-            display: flex;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .app-store-button {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 30px;
-            border-radius: 15px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .app-store-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .download-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .info-item i {
-            font-size: 1.2rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-description {
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #007AFF;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #999;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-
-            .download-info {
-                gap: 1.5rem;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <div class="logo-icon">CC</div>
+                <img src="images/app-icon.png" alt="Caption Craft" class="logo-icon">
                 <span class="logo-text">Caption Craft</span>
             </div>
             <div class="nav-menu">
                 <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">So funktioniert's</a>
                 <a href="#download" class="nav-link">Download</a>
-                <a href="privacy.html" class="nav-link">Datenschutz</a>
-                <a href="terms.html" class="nav-link">AGB</a>
+                <a href="#support" class="nav-link">Support</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
@@ -462,9 +68,9 @@
                             <i class="fab fa-apple"></i>
                             Jetzt im App Store
                         </a>
-                        <a href="#features" class="btn btn-secondary">
+                        <a href="#how-it-works" class="btn btn-secondary">
                             <i class="fas fa-play"></i>
-                            Mehr erfahren
+                            Demo ansehen
                         </a>
                     </div>
                     <div class="hero-stats">
@@ -484,11 +90,7 @@
                 </div>
                 <div class="hero-image">
                     <div class="phone-mockup">
-                        <div class="phone-screen">
-                            Caption Craft<br>
-                            <i class="fas fa-video" style="font-size: 3rem; margin: 20px 0;"></i><br>
-                            iOS App
-                        </div>
+                        <img src="images/app-screenshot-main.png" alt="Caption Craft App Screenshot" class="phone-screen">
                     </div>
                 </div>
             </div>
@@ -538,7 +140,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="feature-title">100% Privat</h3>
+                    <h3 class="feature-title">Datenschutz</h3>
                     <p class="feature-description">Alle Verarbeitungen erfolgen lokal auf deinem Gerät. Deine Videos verlassen niemals dein iPhone - 100% privat und sicher.</p>
                 </div>
 
@@ -553,31 +155,238 @@
         </div>
     </section>
 
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">So einfach geht's</h2>
+            <p class="section-subtitle">In nur 3 Schritten zu professionellen Untertiteln</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Video auswählen</h3>
+                        <p>Wähle ein Video aus deiner Galerie oder nimm ein neues auf. Unterstützt alle gängigen Formate bis zu 10 Minuten Länge.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/step-1.png" alt="Video auswählen">
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Automatische Transkription</h3>
+                        <p>Unsere KI analysiert die Audiospur und erstellt automatisch präzise Untertitel. Du kannst die Sprache auswählen oder automatisch erkennen lassen.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/step-2.png" alt="Transkription">
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Anpassen und Exportieren</h3>
+                        <p>Bearbeite die Untertitel nach deinen Wünschen, wähle einen Style und exportiere dein fertiges Video in hoher Qualität.</p>
+                    </div>
+                    <div class="step-number">3</div>
+                    <div class="step-image">
+                        <img src="images/step-3.png" alt="Export">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">App Screenshots</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot">
+                    <img src="images/screenshot-1.png" alt="Hauptbildschirm">
+                    <p>Hauptbildschirm</p>
+                </div>
+                <div class="screenshot">
+                    <img src="images/screenshot-2.png" alt="Video Upload">
+                    <p>Video Upload</p>
+                </div>
+                <div class="screenshot">
+                    <img src="images/screenshot-3.png" alt="Transkription">
+                    <p>Transkription</p>
+                </div>
+                <div class="screenshot">
+                    <img src="images/screenshot-4.png" alt="Editor">
+                    <p>Untertitel Editor</p>
+                </div>
+                <div class="screenshot">
+                    <img src="images/screenshot-5.png" alt="Styles">
+                    <p>Style Auswahl</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Einfache Preisgestaltung</h2>
+            <p class="section-subtitle">Wähle das Modell, das zu dir passt</p>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Kostenlos</h3>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">0</span>
+                        <span class="period">/für immer</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Bis zu 1 Minute Videos</li>
+                        <li><i class="fas fa-check"></i> Standard Untertitel-Styles</li>
+                        <li><i class="fas fa-check"></i> Grundlegende Bearbeitung</li>
+                        <li><i class="fas fa-check"></i> 5 Sprachen</li>
+                    </ul>
+                    <a href="#download" class="btn btn-outline">Kostenlos starten</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Beliebt</div>
+                    <h3>Premium</h3>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">2.99</span>
+                        <span class="period">/Video</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Bis zu 10 Minuten Videos</li>
+                        <li><i class="fas fa-check"></i> Alle Untertitel-Styles</li>
+                        <li><i class="fas fa-check"></i> Erweiterte Bearbeitung</li>
+                        <li><i class="fas fa-check"></i> 50+ Sprachen</li>
+                        <li><i class="fas fa-check"></i> HD Export</li>
+                        <li><i class="fas fa-check"></i> Keine Wasserzeichen</li>
+                    </ul>
+                    <a href="#download" class="btn btn-primary">Werbung ansehen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Download Section -->
     <section id="download" class="download">
         <div class="container">
-            <h2 class="section-title">Jetzt kostenlos herunterladen</h2>
-            <p class="section-subtitle">Verfügbar im iOS App Store</p>
+            <div class="download-content">
+                <h2 class="section-title">Jetzt kostenlos herunterladen</h2>
+                <p class="section-subtitle">Verfügbar im iOS App Store</p>
 
-            <div class="download-buttons">
-                <a href="https://apps.apple.com/app/caption-craft" class="app-store-button">
-                    <i class="fab fa-apple"></i>
-                    Download im App Store
-                </a>
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/app/caption-craft/idXXXXXXXXX" class="app-store-button" target="_blank">
+                        <img src="images/app-store-badge.svg" alt="Download im App Store">
+                    </a>
+                </div>
+
+                <div class="download-info">
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>iOS 14.0 oder neuer</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <span>4.8★ Bewertung</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-download"></i>
+                        <span>50MB Download</span>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="download-info">
-                <div class="info-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>iOS 14.0 oder neuer</span>
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Häufig gestellte Fragen</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Welche Videoformate werden unterstützt?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Caption Craft unterstützt alle gängigen Videoformate wie MP4, MOV, AVI, MKV und M4V. Videos können bis zu 10 Minuten lang sein und bis zu 500MB groß.</p>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-star"></i>
-                    <span>4.8★ Bewertung</span>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Wie genau ist die automatische Spracherkennung?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unsere KI-gestützte Spracherkennung erreicht eine Genauigkeit von über 95% bei klarer Audioqualität. Die Genauigkeit kann je nach Hintergrundgeräuschen, Akzent und Sprechgeschwindigkeit variieren.</p>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-download"></i>
-                    <span>50MB Download</span>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Werden meine Videos in die Cloud hochgeladen?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nein, alle Verarbeitungen erfolgen lokal auf deinem iPhone. Deine Videos verlassen niemals dein Gerät, was maximale Privatsphäre und Sicherheit gewährleistet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Kann ich die Untertitel manuell bearbeiten?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, du kannst alle automatisch erstellten Untertitel bearbeiten, korrigieren oder neue hinzufügen. Timing, Text und Styling sind vollständig anpassbar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Gibt es eine Geld-zurück-Garantie?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Caption Craft bietet Premium-Features durch das Ansehen von Werbung an. Es fallen keine direkten Kosten an. Falls du Probleme hast, kontaktiere unseren Support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="support">
+        <div class="container">
+            <div class="support-content">
+                <h2 class="section-title">Brauchst du Hilfe?</h2>
+                <p class="section-subtitle">Unser Support-Team steht dir gerne zur Verfügung</p>
+
+                <div class="support-options">
+                    <a href="mailto:support@captioncraft.app" class="support-option">
+                        <i class="fas fa-envelope"></i>
+                        <h3>E-Mail Support</h3>
+                        <p>support@captioncraft.app</p>
+                    </a>
+
+                    <a href="privacy.html" class="support-option">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Datenschutz</h3>
+                        <p>Datenschutzerklärung</p>
+                    </a>
+
+                    <a href="terms.html" class="support-option">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>AGB</h3>
+                        <p>Nutzungsbedingungen</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -589,7 +398,7 @@
             <div class="footer-content">
                 <div class="footer-left">
                     <div class="footer-logo">
-                        <div class="logo-icon">CC</div>
+                        <img src="images/app-icon.png" alt="Caption Craft" class="logo-icon">
                         <span class="logo-text">Caption Craft</span>
                     </div>
                     <p class="footer-description">Die ultimative iOS App für automatische Video-Untertitel mit KI-gestützter Spracherkennung.</p>
@@ -601,6 +410,12 @@
                         <a href="terms.html">AGB</a>
                         <a href="mailto:support@captioncraft.app">Support</a>
                     </div>
+
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -610,20 +425,6 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
